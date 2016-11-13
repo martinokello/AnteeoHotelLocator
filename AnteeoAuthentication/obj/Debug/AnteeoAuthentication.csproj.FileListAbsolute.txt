@@ -1,0 +1,11 @@
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\bin\Debug\AnteeoAuthentication.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\bin\Debug\AnteeoAuthentication.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\bin\Debug\Anteeo.Hotel.Domain.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\bin\Debug\HotelLocatorServices.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\bin\Debug\AnteeoXMLEngine.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\bin\Debug\Anteeo.Hotel.Domain.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\bin\Debug\HotelLocatorServices.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\bin\Debug\AnteeoXMLEngine.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\obj\Debug\AnteeoAuthentication.csprojResolveAssemblyReference.cache
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\obj\Debug\AnteeoAuthentication.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoAuthentication\obj\Debug\AnteeoAuthentication.pdb

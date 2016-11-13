@@ -1,0 +1,7 @@
+C:\C#Projects\AnteeoHotelLocator\AnteeoXMLEngine\bin\Debug\AnteeoXMLEngine.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoXMLEngine\bin\Debug\AnteeoXMLEngine.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoXMLEngine\bin\Debug\Anteeo.Hotel.Domain.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoXMLEngine\bin\Debug\Anteeo.Hotel.Domain.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoXMLEngine\obj\Debug\AnteeoXMLEngine.csprojResolveAssemblyReference.cache
+C:\C#Projects\AnteeoHotelLocator\AnteeoXMLEngine\obj\Debug\AnteeoXMLEngine.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoXMLEngine\obj\Debug\AnteeoXMLEngine.pdb
