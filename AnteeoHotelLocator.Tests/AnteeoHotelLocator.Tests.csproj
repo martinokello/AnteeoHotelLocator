@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="AnteeoXLEngineTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -92,10 +92,29 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AnteeoHotelLocator\AnteeoHotelLocator.csproj">
-      <Project>{6943997A-5C38-432A-9126-434B1E54492A}</Project>
-      <Name>AnteeoHotelLocator</Name>
+    <ProjectReference Include="..\Anteeo.Caching\Anteeo.Caching.csproj">
+      <Project>{e6f8740f-8421-4341-a34e-bbd6f59084b6}</Project>
+      <Name>Anteeo.Caching</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Anteeo.Hotel.Domain\Anteeo.Hotel.Domain.csproj">
+      <Project>{cdef2f31-f6ca-4936-b4dc-d196f12c2b1e}</Project>
+      <Name>Anteeo.Hotel.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AnteeoAuthentication\AnteeoAuthentication.csproj">
+      <Project>{76f72cf2-daa0-457c-a437-e28f82b0f772}</Project>
+      <Name>AnteeoAuthentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AnteeoXMLEngine\AnteeoXMLEngine.csproj">
+      <Project>{C935BBBC-46A9-461F-9160-C6743B70E1B0}</Project>
+      <Name>AnteeoXMLEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotelLocatorServices\HotelLocatorServices.csproj">
+      <Project>{cb3e9953-735b-4093-8d45-141c2221d795}</Project>
+      <Name>HotelLocatorServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

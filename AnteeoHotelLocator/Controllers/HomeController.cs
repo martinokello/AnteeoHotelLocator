@@ -28,6 +28,8 @@ namespace AnteeoHotelLocator.Controllers
             var authUrl = System.Configuration.ConfigurationManager.AppSettings["AnteeoAuthorizationUrl"];
             var hotelServiceEndpointUrl = System.Configuration.ConfigurationManager.AppSettings["AnteeoReigonalLocationsUrl"];
             var cachingDuration = System.Configuration.ConfigurationManager.AppSettings["CacheDurationInHours"];
+            var userName = System.Configuration.ConfigurationManager.AppSettings["UserName"];
+            var password = System.Configuration.ConfigurationManager.AppSettings["Password"];
             _hotelService = new HotelAndLocationService<dynamic[]>();
             
             var cachingHours = 0;
@@ -38,8 +40,8 @@ namespace AnteeoHotelLocator.Controllers
             var authObject = new AuthenticationTo
             {
                 DurationOfAuthorization = cachingHours,
-                Username = "TechnicalTest",
-                Password = "zZE2@$!P",
+                Username = userName,
+                Password = password,
                 TimeSpanValidForUnits = AnteeoTimeUnits.Hours
             };
             _authService = new AnteeoHotelLocatorAuth(_hotelService, authObject);
