@@ -56,7 +56,7 @@ namespace AnteeoXMLEngine
                     countriesList.Add(countryObject);
                     countryObject.Resorts = resortsList;
                 }
-                var resorts = country.Descendants("Resorts");
+                var resorts = country.Descendants("Resort");
                 PopulateResorts(resorts,resortsList);
 
             }
@@ -81,19 +81,14 @@ namespace AnteeoXMLEngine
                         resortObject.Airports = airportsList;
                         resortObject.Hotels = hotelsList;
                     }
-                    var airportsEnvelope = resort.Descendants("Airports").FirstOrDefault();
-                    var hotelsEnvelope = resort.Descendants("Hotels").FirstOrDefault();
 
-                    if (airportsEnvelope != null)
-                    {
-                        var airports = airportsEnvelope.Descendants("Airport");
-                        PopulateAirports(airports, airportsList);
-                    }
-                    if (hotelsEnvelope != null)
-                    {
-                        var hotels = hotelsEnvelope.Descendants("Hotel");
-                        PopulateHotels(hotels, hotelsList);
-                    }
+                    var airportsEnvelope = resort.Descendants("Airports");
+                    var airports = airportsEnvelope.Descendants("Airport");
+                    PopulateAirports(airports, airportsList);
+
+                    var hotelsEnvelope = resort.Descendants("Hotels");
+                    var hotels = hotelsEnvelope.Descendants("Hotel");
+                    PopulateHotels(hotels, hotelsList);
                 }
             }
         }

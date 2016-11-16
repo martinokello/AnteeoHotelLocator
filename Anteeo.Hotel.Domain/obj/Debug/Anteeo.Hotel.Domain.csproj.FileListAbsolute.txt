@@ -2,3 +2,4 @@ C:\C#Projects\AnteeoHotelLocator\Anteeo.Hotel.Domain\bin\Debug\Anteeo.Hotel.Doma
 C:\C#Projects\AnteeoHotelLocator\Anteeo.Hotel.Domain\bin\Debug\Anteeo.Hotel.Domain.pdb
 C:\C#Projects\AnteeoHotelLocator\Anteeo.Hotel.Domain\obj\Debug\Anteeo.Hotel.Domain.dll
 C:\C#Projects\AnteeoHotelLocator\Anteeo.Hotel.Domain\obj\Debug\Anteeo.Hotel.Domain.pdb
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Hotel.Domain\obj\Debug\Anteeo.Hotel.Domain.csprojResolveAssemblyReference.cache
