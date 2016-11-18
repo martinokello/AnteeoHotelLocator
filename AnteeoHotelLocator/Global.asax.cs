@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AnteeoHotelLocator.App_Start;
 
 namespace AnteeoHotelLocator
 {
@@ -16,6 +17,7 @@ namespace AnteeoHotelLocator
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            UnityConfig.RegisterComponents(); 
         }
     }
 }

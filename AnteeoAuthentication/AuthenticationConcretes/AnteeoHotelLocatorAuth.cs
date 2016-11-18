@@ -16,6 +16,10 @@ namespace AnteeoAuthentication.AuthenticationConcretes
         private AuthenticationTo _authenticationTo;
         private IHotelAndLocation<dynamic[]> _authService;
 
+        public AnteeoHotelLocatorAuth()
+        {
+            
+        }
         public AnteeoHotelLocatorAuth(IHotelAndLocation<dynamic[]> authService, AuthenticationTo authenticationTo)
         {
             _authService = authService;

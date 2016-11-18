@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Compilation;
 using System.Web.Mvc;
 using System.Configuration;
+using System.Configuration.Internal;
 using Anteeo.Caching.Anteeo.Caching.Concretes;
 using Anteeo.Caching.Anteeo.Caching.Interfaces;
 using Anteeo.Hotel.Domain.TransferObjects;
@@ -14,6 +15,7 @@ using AnteeoAuthentication.AuthenticationConcretes;
 using HotelLocatorServices.ServiceInterfaces;
 using HotelLocatorServices.ConcreteServices;
 using Microsoft.Owin.Security.Infrastructure;
+using Microsoft.Practices.Unity;
 
 namespace AnteeoHotelLocator.Controllers
 {
@@ -21,35 +23,45 @@ namespace AnteeoHotelLocator.Controllers
     {
         private IAnteeoCaching _cachingService;
         private IHotelAndLocation<dynamic[]> _hotelService;
-        private AuthenticationBase _authService;
+        private AnteeoHotelLocatorAuth _authService;
+
+        public HomeController()
+        {
+            _cachingService = new AnteeoCaching(null,Int32.Parse(ConfigHelper.CachingDuration));
+            _authService = new AnteeoHotelLocatorAuth(new HotelAndLocationService<dynamic[]>(), new AuthenticationTo());
+            _hotelService = new HotelAndLocationService<dynamic[]>();
+        }
+        [InjectionConstructor]
+        public HomeController(AnteeoHotelLocatorAuth authService, IHotelAndLocation<dynamic[]> hotelService,
+            IAnteeoCaching cachingService)
+        {
+            _cachingService = cachingService;
+            _authService = authService;
+            _hotelService = hotelService;
+        }
         public ActionResult Index()
         {
             
-            var authUrl = System.Configuration.ConfigurationManager.AppSettings["AnteeoAuthorizationUrl"];
-            var hotelServiceEndpointUrl = System.Configuration.ConfigurationManager.AppSettings["AnteeoReigonalLocationsUrl"];
-            var cachingDuration = System.Configuration.ConfigurationManager.AppSettings["CacheDurationInHours"];
-            var userName = System.Configuration.ConfigurationManager.AppSettings["UserName"];
-            var password = System.Configuration.ConfigurationManager.AppSettings["Password"];
             _hotelService = new HotelAndLocationService<dynamic[]>();
             
             var cachingHours = 0;
             var CacheTokenKey = "TokenKey";
-            int.TryParse(cachingDuration, out cachingHours);
+            int.TryParse(ConfigHelper.CachingDuration, out cachingHours);
 
             _cachingService = new AnteeoCaching(HttpContext.Cache, cachingHours);
             var authObject = new AuthenticationTo
             {
                 DurationOfAuthorization = cachingHours,
-                Username = userName,
-                Password = password,
+                Username = ConfigHelper.UserName,
+                Password = ConfigHelper.Password,
                 TimeSpanValidForUnits = AnteeoTimeUnits.Hours
             };
-            _authService = new AnteeoHotelLocatorAuth(_hotelService, authObject);
+            //_authService = new AnteeoHotelLocatorAuth(_hotelService, authObject);
 
             var resultTokenContent = _cachingService.GetFromCache(CacheTokenKey);
             if (resultTokenContent == null || DateTime.Now <= _authService.ComputeExpirationTime())
             {
-                resultTokenContent = (_authService as AnteeoHotelLocatorAuth).GetToken(authUrl, authObject.Username, authObject.Password);
+                resultTokenContent = _authService.GetToken(ConfigHelper.AuthUrl, authObject.Username, authObject.Password);
                 _cachingService.StoreIntoCache(CacheTokenKey, resultTokenContent, cachingHours);
                 authObject.StartTime = DateTime.Now;
                 authObject.Token = resultTokenContent;
@@ -67,7 +79,7 @@ namespace AnteeoHotelLocator.Controllers
 
                 queryParams.Add("username",authObject.Username);
                 queryParams.Add("password",authObject.Password);
-                dynamic[] listOfRegions = _hotelService.GetAllHotelAndLocationData(hotelServiceEndpointUrl, queryParams, resultTokenContent);
+                dynamic[] listOfRegions = _hotelService.GetAllHotelAndLocationData(ConfigHelper.HotelServiceEndpointUrl, queryParams, resultTokenContent);
 
                 if (listOfRegions[0] == null)
                 {

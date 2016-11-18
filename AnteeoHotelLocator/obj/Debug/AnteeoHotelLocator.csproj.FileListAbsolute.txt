@@ -20,6 +20,10 @@ C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Owin.Security.
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Owin.Security.OAuth.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Owin.Security.Twitter.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.ServiceLocation.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.Unity.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Web.Infrastructure.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Newtonsoft.Json.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Owin.dll
@@ -36,6 +40,11 @@ C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Anteeo.Caching.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Anteeo.Hotel.Domain.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\AnteeoAuthentication.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\HotelLocatorServices.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.ServiceLocation.xml
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.Unity.xml
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\System.Web.Helpers.xml
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\System.Web.Mvc.xml
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\System.Web.Optimization.xml

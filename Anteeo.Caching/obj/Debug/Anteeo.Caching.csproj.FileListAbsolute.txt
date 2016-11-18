@@ -1,5 +1,13 @@
 C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Anteeo.Caching.dll
 C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Anteeo.Caching.pdb
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.Unity.dll
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.Unity.xml
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
 C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\obj\Debug\Anteeo.Caching.dll
 C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\obj\Debug\Anteeo.Caching.pdb
-C:\C#Projects\AnteeoHotelLocator\Anteeo.Caching\obj\Debug\Anteeo.Caching.csprojResolveAssemblyReference.cache

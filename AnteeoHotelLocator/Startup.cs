@@ -1,6 +1,5 @@
 ﻿using Microsoft.Owin;
 using Owin;
-
 [assembly: OwinStartupAttribute(typeof(AnteeoHotelLocator.Startup))]
 namespace AnteeoHotelLocator
 {

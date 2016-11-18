@@ -2,8 +2,17 @@ C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\HotelLocatorServ
 C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\HotelLocatorServices.pdb
 C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Anteeo.Hotel.Domain.dll
 C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\AnteeoXMLEngine.dll
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.Unity.dll
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
 C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Anteeo.Hotel.Domain.pdb
 C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\AnteeoXMLEngine.pdb
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.Unity.xml
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
 C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\obj\Debug\HotelLocatorServices.csprojResolveAssemblyReference.cache
 C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\obj\Debug\HotelLocatorServices.dll
 C:\C#Projects\AnteeoHotelLocator\HotelLocatorServices\obj\Debug\HotelLocatorServices.pdb
