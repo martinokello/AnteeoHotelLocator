@@ -31,7 +31,7 @@ namespace AnteeoHotelLocator.Controllers
         {
             int.TryParse(ConfigHelper.CachingDuration, out cachingHours);
 
-            _cachingService = new AnteeoCaching(HttpContext.Cache, Int32.Parse(ConfigHelper.CachingDuration));
+            _cachingService = new AnteeoCaching(null, Int32.Parse(ConfigHelper.CachingDuration));
             _authService = new AnteeoHotelLocatorAuth(new HotelAndLocationService<dynamic[]>(), new AuthenticationTo());
             _hotelService = new HotelAndLocationService<dynamic[]>();
         }
@@ -45,7 +45,8 @@ namespace AnteeoHotelLocator.Controllers
         }
         public ActionResult Index()
         {
-            
+            (_cachingService as AnteeoCaching).CacheObject = HttpContext.Cache;
+
             _hotelService = new HotelAndLocationService<dynamic[]>();
             
             var authObject = new AuthenticationTo
