@@ -47,13 +47,30 @@ namespace HotelLocatorServices.ConcreteServices
                 request.Headers.Add("Authourization", string.Format("TMS{0}", message.Token));
 
             var response = (HttpWebResponse)request.GetResponse();
+            var isPing = true;
+            return GetResponseMessage(response, true);
+        }
+
+        private ResponseMessage GetResponseMessage(HttpWebResponse response,bool isPing)
+        {
             using (var stream = response.GetResponseStream())
             {
                 var streamReader = new StreamReader(stream);
                 try
                 {
-                    var result = streamReader.ReadToEnd();
-                    return new ResponseMessage { Content = new List<string> { result }.ToArray() };
+                    if (isPing)
+                    {
+                        var result = streamReader.ReadToEnd();
+                        return new ResponseMessage {Content = new List<string> {result}.ToArray()};
+                    }
+                    else
+                    {
+                        var responseMessage = new ResponseMessage();
+                        var xml = streamReader.ReadToEnd();
+                        var result = AnteeoXmlHelper.ParseFromXmlString(xml);
+                        responseMessage.Content = result.ToArray();
+                        return responseMessage;
+                    }
                 }
                 catch (Exception e)
                 {
@@ -61,7 +78,6 @@ namespace HotelLocatorServices.ConcreteServices
                 }
             }
         }
-
         private T[] Request(string url, RequestMessage message)
         {
             var responseMessage = new ResponseMessage();
@@ -74,16 +90,8 @@ namespace HotelLocatorServices.ConcreteServices
                         request.Headers.Add("Authorization", string.Format("TMS{0}", message.Token));
 
                         var response = (HttpWebResponse)request.GetResponse();
-                        using (var stream = response.GetResponseStream())
-                        {
-                            var streamReader = new StreamReader(stream);
-
-                            var xml = streamReader.ReadToEnd();
-                            var result = AnteeoXmlHelper.ParseFromXmlString(xml);
-                            responseMessage.Content = result.ToArray();
-                            return (responseMessage.Content as T[]);
-
-                        }
+                        responseMessage = GetResponseMessage(response, false);
+                        return responseMessage.Content as T[];
                         break;
                     case HttpMethod.POST:
                         //Implement Post and other HttpVerbs
@@ -93,7 +101,8 @@ namespace HotelLocatorServices.ConcreteServices
             }
             catch (Exception e)
             {
-                responseMessage.Content = new [] { e.Message as T, e.StackTrace as T };
+                responseMessage.Content = new[] { e.Message as T, e.StackTrace as T };
+                return responseMessage.Content as T[];
             }
 
             return responseMessage.Content as T[];
