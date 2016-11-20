@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -73,17 +74,28 @@ namespace AnteeoHotelLocator.Controllers
             {
                 var queryParams = new Dictionary<string, string>();
 
-                queryParams.Add("username",authObject.Username);
-                queryParams.Add("password",authObject.Password);
-                dynamic[] listOfRegions = _hotelService.GetAllHotelAndLocationData(ConfigHelper.HotelServiceEndpointUrl, queryParams, resultTokenContent);
-
-                if (listOfRegions[0] == null)
+                var pingResponse = _hotelService.Ping(ConfigHelper.HotelServiceEndpointUrl, new RequestMessage { Content = null, Token = resultTokenContent, QueryString = null}, ModeType.Ping);
+                dynamic[] listOfRegions = null;
+                if (pingResponse.Content.GetType().IsAssignableFrom(typeof (bool[])))
                 {
-                    ViewBag.Exception = "Exception: Failed Authorization: " /*+ (string)listOfRegions[0]*/;
-                    return View();
+                    if (pingResponse.Content[0])
+                    {
+                        listOfRegions = _hotelService.GetAllHotelAndLocationData(ConfigHelper.HotelServiceEndpointUrl,
+                            queryParams, resultTokenContent);
+                        if (listOfRegions.GetType().IsAssignableFrom(typeof (string)))
+                        {
+                            ViewBag.Exception = "Exception: Failed Authorization: " + (string) listOfRegions[0];
+                            return View();
+                        }
+                    }
+                    return View((Region[]) listOfRegions);
                 }
-                return View((Region[])listOfRegions);
+                else if (pingResponse.Content.GetType().IsAssignableFrom(typeof(string[])))
+                {
+                    ViewBag.Exception = "An exception occured!! " + pingResponse.Content[0] + ", Stack Trace " + Environment.NewLine + pingResponse.Content[1];
+                }
             }
+
 
             return View();
         }

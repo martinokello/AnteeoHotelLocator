@@ -44,7 +44,7 @@ namespace AnteeoAuthentication.AuthenticationConcretes
                 _authenticationTo.Password);
             var message = new RequestMessage();
 
-            return _authService.Ping(url + queryString, message);
+            return _authService.Ping(url + queryString, message,ModeType.Authentication);
         }
     }
 }

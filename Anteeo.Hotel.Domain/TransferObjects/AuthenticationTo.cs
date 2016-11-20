@@ -21,6 +21,13 @@ namespace Anteeo.Hotel.Domain.TransferObjects
         DELETE
     };
 
+    public enum ModeType
+    {
+        Authentication = 1,
+        Ping = 2,
+        Request = 3
+    };
+
     public class AuthenticationTo
     {
         public DateTime StartTime { get; set; }

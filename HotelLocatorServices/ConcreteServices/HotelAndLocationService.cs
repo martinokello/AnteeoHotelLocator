@@ -39,43 +39,67 @@ namespace HotelLocatorServices.ConcreteServices
         //Requires Refactoring!! No time to do this    Not enough time - so mental notes  ////////
         //DRY Principles not adhered too - I should separate common code (httpWebRequest code/////
         //////////////////////////////////////////////////////////////////////////////////////////
-        public ResponseMessage Ping(string url, RequestMessage message)
+        public ResponseMessage Ping(string url, RequestMessage message, ModeType modeType)
         {
             var responseMessage = new ResponseMessage();
             var request = (HttpWebRequest)HttpWebRequest.Create(url);
-            if (!string.IsNullOrEmpty(message.Token))
-                request.Headers.Add("Authourization", string.Format("TMS{0}", message.Token));
+            try
+            {
+                if (modeType == ModeType.Authentication)
+                {
+                    var response = (HttpWebResponse) request.GetResponse();
+                    return GetResponseMessage(response, ModeType.Authentication);
+                }
+                else if (modeType == ModeType.Ping)
+                {
+                    request.Headers.Add("Authourization", string.Format("TMS{0}", message.Token));
+                    var response = (HttpWebResponse) request.GetResponse();
+                    return GetResponseMessage(response, ModeType.Ping);
+                }
+            }
+            catch (Exception e)
+            {
+               responseMessage.Content = new[] {e.Message, e.StackTrace};
+               return responseMessage;
+            }
 
-            var response = (HttpWebResponse)request.GetResponse();
-            var isPing = true;
-            return GetResponseMessage(response, true);
+            responseMessage.Content = new[] { "Unsupported Operation", "Unsupported Operation" };
+            return responseMessage;
         }
 
-        private ResponseMessage GetResponseMessage(HttpWebResponse response,bool isPing)
+        private ResponseMessage GetResponseMessage(HttpWebResponse response, ModeType modeType)
         {
             using (var stream = response.GetResponseStream())
             {
                 var streamReader = new StreamReader(stream);
                 try
                 {
-                    if (isPing)
+                    dynamic result =null;
+
+                    switch(modeType)
                     {
-                        var result = streamReader.ReadToEnd();
-                        return new ResponseMessage {Content = new List<string> {result}.ToArray()};
-                    }
-                    else
-                    {
-                        var responseMessage = new ResponseMessage();
+                        case ModeType.Ping:
+                        result = streamReader.ReadToEnd();
+                        return new ResponseMessage {Content = new List<dynamic> {true}.ToArray()};
+
+                        case ModeType.Request:
+                            var responseMessage = new ResponseMessage();
                         var xml = streamReader.ReadToEnd();
-                        var result = AnteeoXmlHelper.ParseFromXmlString(xml);
+                        result = AnteeoXmlHelper.ParseFromXmlString(xml);
                         responseMessage.Content = result.ToArray();
                         return responseMessage;
+
+                        case ModeType.Authentication:
+                        result = streamReader.ReadToEnd();
+                        return new ResponseMessage { Content = new List<dynamic> { result }.ToArray() };
+
                     }
                 }
                 catch (Exception e)
                 {
-                    return new ResponseMessage { Content = new List<string> { string.Format("An error Occured!!: {0}", e.Message) }.ToArray() };
+                    return new ResponseMessage { Content = new List<dynamic> { string.Format("An error Occured!!: {0}", e.Message) }.ToArray() };
                 }
+                return new ResponseMessage{Content = new[]{ "No Service Mode Stated!!"}};
             }
         }
         private T[] Request(string url, RequestMessage message)
@@ -90,7 +114,7 @@ namespace HotelLocatorServices.ConcreteServices
                         request.Headers.Add("Authorization", string.Format("TMS{0}", message.Token));
 
                         var response = (HttpWebResponse)request.GetResponse();
-                        responseMessage = GetResponseMessage(response, false);
+                        responseMessage = GetResponseMessage(response, ModeType.Request);
                         return responseMessage.Content as T[];
                         break;
                     case HttpMethod.POST:
