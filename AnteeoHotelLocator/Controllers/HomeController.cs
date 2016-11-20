@@ -37,8 +37,7 @@ namespace AnteeoHotelLocator.Controllers
             _hotelService = new HotelAndLocationService();
         }
         [InjectionConstructor]
-        public HomeController(AnteeoHotelLocatorAuth authService, IHotelAndLocation hotelService,
-            IAnteeoCaching cachingService)
+        public HomeController(AnteeoHotelLocatorAuth authService, IHotelAndLocation hotelService, IAnteeoCaching cachingService)
         {
             _cachingService = cachingService;
             _authService = authService;
