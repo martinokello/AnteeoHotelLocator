@@ -257,6 +257,10 @@
       <Project>{76F72CF2-DAA0-457C-A437-E28F82B0F772}</Project>
       <Name>AnteeoAuthentication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AnteeoXMLEngine\AnteeoXMLEngine.csproj">
+      <Project>{c935bbbc-46a9-461f-9160-c6743b70e1b0}</Project>
+      <Name>AnteeoXMLEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HotelLocatorServices\HotelLocatorServices.csproj">
       <Project>{cb3e9953-735b-4093-8d45-141c2221d795}</Project>
       <Name>HotelLocatorServices</Name>

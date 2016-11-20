@@ -65,19 +65,19 @@ namespace AnteeoHotelLocator.Controllers
             if (tokenUnit.Length > 1)
             {
                 //Errored: MESSEGE in content
-                ViewBag.Exception = "Exception: Failed Authorization: " + resultTokenContent;
+                ViewBag.Exception = "Exception: Failed Token Acquisition: " + resultTokenContent;
                 return View();
             }
             else if (tokenUnit.Length == 1)
             {
                 var queryParams = new Dictionary<string, string>();
 
-                var pingResponse = _hotelService.Ping(ConfigHelper.HotelServiceEndpointUrl, new RequestMessage { Content = null, Token = resultTokenContent, QueryString = null}, ModeType.Ping);
+                //var pingResponse = _hotelService.Ping(ConfigHelper.HotelServiceEndpointUrl, new RequestMessage { Content = null, Token = resultTokenContent, QueryString = null}, ModeType.Ping);
                 dynamic[] listOfRegions = null;
-                if (pingResponse.Content.GetType().IsAssignableFrom(typeof (bool[])))
-                {
-                    if (pingResponse.Content[0])
-                    {
+                //if (pingResponse.Content.GetType().IsAssignableFrom(typeof (bool[])))
+                //{
+                    //if (pingResponse.Content[0])
+                    //{
                         listOfRegions = _hotelService.GetAllHotelAndLocationData(ConfigHelper.HotelServiceEndpointUrl,
                             queryParams, resultTokenContent);
                         if (listOfRegions.GetType().IsAssignableFrom(typeof (string[])))
@@ -85,16 +85,17 @@ namespace AnteeoHotelLocator.Controllers
                             ViewBag.Exception = "Exception: Failed Authorization: " + (string) listOfRegions[0];
                             return View();
                         }
-                    }
-                    return View((Region[]) listOfRegions);
-                }
-                else if (pingResponse.Content.GetType().IsAssignableFrom(typeof(string[])))
-                {
-                    ViewBag.Exception = "An exception occured!! " + pingResponse.Content[0] + ", Stack Trace " + Environment.NewLine + pingResponse.Content[1];
-                }
+                        else if (listOfRegions.GetType().IsAssignableFrom(typeof (Region[])))
+                        {
+                            return View((Region[])listOfRegions);
+                        }
+                    //}
+                //}
+                //else if (pingResponse.Content.GetType().IsAssignableFrom(typeof(string[])))
+                //{
+                    //ViewBag.Exception = "An exception occured!! " + pingResponse.Content[0] + ", Stack Trace " + Environment.NewLine + pingResponse.Content[1];
+                //}
             }
-
-
             return View();
         }
 

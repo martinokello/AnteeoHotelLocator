@@ -13,5 +13,6 @@ namespace AnteeoHotelLocator
         public static string CachingDuration = System.Configuration.ConfigurationManager.AppSettings["CacheDurationInHours"];
         public static string UserName = System.Configuration.ConfigurationManager.AppSettings["UserName"];
         public static string Password = System.Configuration.ConfigurationManager.AppSettings["Password"];
+
     }
 }

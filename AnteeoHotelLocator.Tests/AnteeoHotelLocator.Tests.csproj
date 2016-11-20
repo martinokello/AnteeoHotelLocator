@@ -99,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AnteeoXLEngineTest.cs" />
+    <Compile Include="AnteeoXmlEngineTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

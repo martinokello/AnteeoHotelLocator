@@ -80,7 +80,7 @@ namespace HotelLocatorServices.ConcreteServices
                     {
                         case ModeType.Ping:
                         result = streamReader.ReadToEnd();
-                        return new ResponseMessage {Content = new List<object> {true}.ToArray()};
+                        return new ResponseMessage {Content = new List<dynamic>{true}.ToArray()};
 
                         case ModeType.Request:
                             var responseMessage = new ResponseMessage();
@@ -91,7 +91,7 @@ namespace HotelLocatorServices.ConcreteServices
 
                         case ModeType.Authentication:
                         result = streamReader.ReadToEnd();
-                        return new ResponseMessage { Content = new List<object> { result }.ToArray() };
+                        return new ResponseMessage { Content = new List<dynamic> { result }.ToArray() };
 
                     }
                 }
@@ -128,7 +128,6 @@ namespace HotelLocatorServices.ConcreteServices
                 responseMessage.Content = new[] { e.Message, e.StackTrace };
                 return responseMessage.Content;
             }
-
             return responseMessage.Content;
         }
     }
