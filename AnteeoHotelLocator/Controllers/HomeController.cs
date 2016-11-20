@@ -45,7 +45,7 @@ namespace AnteeoHotelLocator.Controllers
             _hotelService = new HotelAndLocationService<dynamic[]>();
             
             var cachingHours = 0;
-            var CacheTokenKey = "TokenKey";
+            var cacheTokenKey = "TokenKey";
             int.TryParse(ConfigHelper.CachingDuration, out cachingHours);
 
             _cachingService = new AnteeoCaching(HttpContext.Cache, cachingHours);
@@ -56,17 +56,13 @@ namespace AnteeoHotelLocator.Controllers
                 Password = ConfigHelper.Password,
                 TimeSpanValidForUnits = AnteeoTimeUnits.Hours
             };
-            //_authService = new AnteeoHotelLocatorAuth(_hotelService, authObject);
 
-            var resultTokenContent = _cachingService.GetFromCache(CacheTokenKey);
+            var resultTokenContent = _cachingService.GetFromCache(cacheTokenKey);
             if (resultTokenContent == null || DateTime.Now <= _authService.ComputeExpirationTime())
             {
-                resultTokenContent = _authService.GetToken(ConfigHelper.AuthUrl, authObject.Username, authObject.Password);
-                _cachingService.StoreIntoCache(CacheTokenKey, resultTokenContent, cachingHours);
-                authObject.StartTime = DateTime.Now;
-                authObject.Token = resultTokenContent;
+                resultTokenContent = GetAuthToken(authObject, cacheTokenKey, cachingHours);
             }
-            var tokenUnit = resultTokenContent.Split(new[] {' '});
+            var tokenUnit = resultTokenContent.Split(new[] {' '},StringSplitOptions.RemoveEmptyEntries);
             if (tokenUnit.Length > 1)
             {
                 //Errored: MESSEGE in content
@@ -92,6 +88,14 @@ namespace AnteeoHotelLocator.Controllers
             return View();
         }
 
+        private string GetAuthToken(AuthenticationTo authObject,string cacheTokenKey, int cachingHours)
+        {
+            var resultTokenContent = _authService.GetToken(ConfigHelper.AuthUrl, authObject.Username, authObject.Password);
+            _cachingService.StoreIntoCache(cacheTokenKey, resultTokenContent, cachingHours);
+            authObject.StartTime = DateTime.Now;
+            authObject.Token = resultTokenContent;
+            return resultTokenContent;
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
