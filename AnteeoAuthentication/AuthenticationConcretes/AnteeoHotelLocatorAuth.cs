@@ -14,13 +14,13 @@ namespace AnteeoAuthentication.AuthenticationConcretes
     public class AnteeoHotelLocatorAuth: AuthenticationBase,IAuthenticator
     {
         private AuthenticationTo _authenticationTo;
-        private IHotelAndLocation<dynamic[]> _authService;
+        private IHotelAndLocation _authService;
 
         public AnteeoHotelLocatorAuth()
         {
             
         }
-        public AnteeoHotelLocatorAuth(IHotelAndLocation<dynamic[]> authService, AuthenticationTo authenticationTo)
+        public AnteeoHotelLocatorAuth(IHotelAndLocation authService, AuthenticationTo authenticationTo)
         {
             _authService = authService;
             _authenticationTo = authenticationTo;

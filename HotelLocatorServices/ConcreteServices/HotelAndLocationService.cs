@@ -12,11 +12,11 @@ using HotelLocatorServices.ServiceInterfaces;
 
 namespace HotelLocatorServices.ConcreteServices
 {
-    public class HotelAndLocationService<T> : IHotelAndLocation<T> where T:class
+    public class HotelAndLocationService : IHotelAndLocation
     {
         public string TmsToken { get; set; }
 
-        public T[] GetAllHotelAndLocationData(string url, IDictionary<string, string> queryParameters, string token)
+        public dynamic[] GetAllHotelAndLocationData(string url, IDictionary<string, string> queryParameters, string token)
         {
             var requestObject = new RequestMessage { QueryString = GetParametersAsQueryString(queryParameters), Token = token, HttpMethod = HttpMethod.GET };
             var responseObject = Request(url, requestObject);
@@ -80,7 +80,7 @@ namespace HotelLocatorServices.ConcreteServices
                     {
                         case ModeType.Ping:
                         result = streamReader.ReadToEnd();
-                        return new ResponseMessage {Content = new List<dynamic> {true}.ToArray()};
+                        return new ResponseMessage {Content = new List<object> {true}.ToArray()};
 
                         case ModeType.Request:
                             var responseMessage = new ResponseMessage();
@@ -91,18 +91,18 @@ namespace HotelLocatorServices.ConcreteServices
 
                         case ModeType.Authentication:
                         result = streamReader.ReadToEnd();
-                        return new ResponseMessage { Content = new List<dynamic> { result }.ToArray() };
+                        return new ResponseMessage { Content = new List<object> { result }.ToArray() };
 
                     }
                 }
                 catch (Exception e)
                 {
-                    return new ResponseMessage { Content = new List<dynamic> { string.Format("An error Occured!!: {0}", e.Message) }.ToArray() };
+                    return new ResponseMessage { Content = new List<object> { string.Format("An error Occured!!: {0}", e.Message) ,e.StackTrace}.ToArray() };
                 }
                 return new ResponseMessage{Content = new[]{ "No Service Mode Stated!!"}};
             }
         }
-        private T[] Request(string url, RequestMessage message)
+        private dynamic[] Request(string url, RequestMessage message)
         {
             var responseMessage = new ResponseMessage();
             try
@@ -115,8 +115,8 @@ namespace HotelLocatorServices.ConcreteServices
 
                         var response = (HttpWebResponse)request.GetResponse();
                         responseMessage = GetResponseMessage(response, ModeType.Request);
-                        return responseMessage.Content as T[];
-                        break;
+                        return responseMessage.Content;
+
                     case HttpMethod.POST:
                         //Implement Post and other HttpVerbs
                         break;
@@ -125,11 +125,11 @@ namespace HotelLocatorServices.ConcreteServices
             }
             catch (Exception e)
             {
-                responseMessage.Content = new[] { e.Message as T, e.StackTrace as T };
-                return responseMessage.Content as T[];
+                responseMessage.Content = new[] { e.Message, e.StackTrace };
+                return responseMessage.Content;
             }
 
-            return responseMessage.Content as T[];
+            return responseMessage.Content;
         }
     }
 }

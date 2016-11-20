@@ -23,7 +23,7 @@ namespace AnteeoHotelLocator.Controllers
     public class HomeController : Controller
     {
         private IAnteeoCaching _cachingService;
-        private IHotelAndLocation<dynamic[]> _hotelService;
+        private IHotelAndLocation _hotelService;
         private AnteeoHotelLocatorAuth _authService;
         private int cachingHours = 0;
         private const string cacheTokenKey = "TokenKey";
@@ -33,11 +33,11 @@ namespace AnteeoHotelLocator.Controllers
             int.TryParse(ConfigHelper.CachingDuration, out cachingHours);
 
             _cachingService = new AnteeoCaching(null, Int32.Parse(ConfigHelper.CachingDuration));
-            _authService = new AnteeoHotelLocatorAuth(new HotelAndLocationService<dynamic[]>(), new AuthenticationTo());
-            _hotelService = new HotelAndLocationService<dynamic[]>();
+            _authService = new AnteeoHotelLocatorAuth(new HotelAndLocationService(), new AuthenticationTo());
+            _hotelService = new HotelAndLocationService();
         }
         [InjectionConstructor]
-        public HomeController(AnteeoHotelLocatorAuth authService, IHotelAndLocation<dynamic[]> hotelService,
+        public HomeController(AnteeoHotelLocatorAuth authService, IHotelAndLocation hotelService,
             IAnteeoCaching cachingService)
         {
             _cachingService = cachingService;
@@ -47,8 +47,6 @@ namespace AnteeoHotelLocator.Controllers
         public ActionResult Index()
         {
             (_cachingService as AnteeoCaching).CacheObject = HttpContext.Cache;
-
-            _hotelService = new HotelAndLocationService<dynamic[]>();
             
             var authObject = new AuthenticationTo
             {
@@ -82,7 +80,7 @@ namespace AnteeoHotelLocator.Controllers
                     {
                         listOfRegions = _hotelService.GetAllHotelAndLocationData(ConfigHelper.HotelServiceEndpointUrl,
                             queryParams, resultTokenContent);
-                        if (listOfRegions.GetType().IsAssignableFrom(typeof (string)))
+                        if (listOfRegions.GetType().IsAssignableFrom(typeof (string[])))
                         {
                             ViewBag.Exception = "Exception: Failed Authorization: " + (string) listOfRegions[0];
                             return View();

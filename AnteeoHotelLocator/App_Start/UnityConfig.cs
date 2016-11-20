@@ -34,7 +34,7 @@ namespace AnteeoHotelLocator.App_Start
 
         private static void InitializeUnityContainer(IUnityContainer container)
         {
-            container.RegisterType<IHotelAndLocation<dynamic>, HotelAndLocationService<dynamic>>();
+            container.RegisterType<IHotelAndLocation,HotelAndLocationService>();
             container.RegisterType<AnteeoHotelLocatorAuth>();
             container.RegisterType<IAnteeoCaching, AnteeoCaching>();
 
