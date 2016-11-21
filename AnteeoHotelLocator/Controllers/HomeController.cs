@@ -24,7 +24,7 @@ namespace AnteeoHotelLocator.Controllers
     {
         private IAnteeoCaching _cachingService;
         private IHotelAndLocation _hotelService;
-        private AnteeoHotelLocatorAuth _authService;
+        private AuthenticationBase _authService;
         private int cachingHours = 0;
         private const string cacheTokenKey = "TokenKey";
 
@@ -32,20 +32,19 @@ namespace AnteeoHotelLocator.Controllers
         {
             int.TryParse(ConfigHelper.CachingDuration, out cachingHours);
 
-            _cachingService = new AnteeoCaching(null, Int32.Parse(ConfigHelper.CachingDuration));
-            _authService = new AnteeoHotelLocatorAuth(new HotelAndLocationService(), new AuthenticationTo());
-            _hotelService = new HotelAndLocationService();
+            //_authService = new AnteeoHotelLocatorAuth(new HotelAndLocationService(), new AuthenticationTo());
+            //_hotelService = new HotelAndLocationService();
         }
         [InjectionConstructor]
-        public HomeController(AnteeoHotelLocatorAuth authService, IHotelAndLocation hotelService, IAnteeoCaching cachingService)
+        public HomeController(AuthenticationBase authService, IHotelAndLocation hotelService,IAnteeoCaching anteeoCaching)
         {
-            _cachingService = cachingService;
             _authService = authService;
             _hotelService = hotelService;
+            _cachingService = anteeoCaching;
         }
         public ActionResult Index()
         {
-            (_cachingService as AnteeoCaching).CacheObject = HttpContext.Cache;
+            _cachingService.CacheObject = HttpContext.Cache;
             
             var authObject = new AuthenticationTo
             {

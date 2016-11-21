@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Anteeo.Hotel.Domain.TransferObjects;
 using AnteeoAuthentication.AuthAbstracts;
-using AnteeoAuthentication.IAuth;
-using HotelLocatorServices.ConcreteServices;
 using HotelLocatorServices.ServiceInterfaces;
 
 namespace AnteeoAuthentication.AuthenticationConcretes
 {
-    public class AnteeoHotelLocatorAuth: AuthenticationBase,IAuthenticator
+    public class AnteeoHotelLocatorAuth: AuthenticationBase
     {
         private AuthenticationTo _authenticationTo;
         private IHotelAndLocation _authService;
@@ -25,12 +19,12 @@ namespace AnteeoAuthentication.AuthenticationConcretes
             _authService = authService;
             _authenticationTo = authenticationTo;
         }
-        public override DateTime ComputeExpirationTime()
+        public DateTime ComputeExpirationTime()
         {
            return _authenticationTo.StartTime + TimeSpan.FromHours(_authenticationTo.DurationOfAuthorization);
         }
 
-        public string GetToken(string authUrl, string username, string password)
+        public override string GetToken(string authUrl, string username, string password)
         {
             _authenticationTo.Username = username;
             _authenticationTo.Password = password;

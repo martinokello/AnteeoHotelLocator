@@ -79,18 +79,18 @@ namespace HotelLocatorServices.ConcreteServices
                     switch(modeType)
                     {
                         case ModeType.Ping:
-                        result = streamReader.ReadToEnd();
+                            result = streamReader.ReadToEnd();
                         return new ResponseMessage {Content = new List<dynamic>{true}.ToArray()};
 
                         case ModeType.Request:
                             var responseMessage = new ResponseMessage();
-                        var xml = streamReader.ReadToEnd();
-                        result = AnteeoXmlHelper.ParseFromXmlString(xml);
-                        responseMessage.Content = result.ToArray();
+                            var xml = streamReader.ReadToEnd();
+                            result = AnteeoXmlHelper.ParseFromXmlString(xml);
+                            responseMessage.Content = result.ToArray();
                         return responseMessage;
 
                         case ModeType.Authentication:
-                        result = streamReader.ReadToEnd();
+                            result = streamReader.ReadToEnd();
                         return new ResponseMessage { Content = new List<dynamic> { result }.ToArray() };
 
                     }

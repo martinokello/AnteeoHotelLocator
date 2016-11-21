@@ -35,7 +35,7 @@ namespace AnteeoHotelLocator.App_Start
         private static void InitializeUnityContainer(IUnityContainer container)
         {
             container.RegisterType<IHotelAndLocation,HotelAndLocationService>();
-            container.RegisterType<AnteeoHotelLocatorAuth>();
+            container.RegisterType<AuthenticationBase,AnteeoHotelLocatorAuth>();
             container.RegisterType<IAnteeoCaching, AnteeoCaching>();
 
             IEnumerable<Type> controllerTypes = from t in Assembly.GetExecutingAssembly().GetTypes()

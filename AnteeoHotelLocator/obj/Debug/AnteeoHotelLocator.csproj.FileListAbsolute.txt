@@ -4,6 +4,7 @@ C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\AnteeoHotelLocator.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Anteeo.Caching.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Anteeo.Hotel.Domain.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\AnteeoAuthentication.dll
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\AnteeoXMLEngine.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Antlr3.Runtime.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\EntityFramework.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\EntityFramework.SqlServer.dll
@@ -35,10 +36,10 @@ C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\System.Web.WebPages.Depl
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\System.Web.WebPages.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\System.Web.WebPages.Razor.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\WebGrease.dll
-C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\AnteeoXMLEngine.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Anteeo.Caching.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Anteeo.Hotel.Domain.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\AnteeoAuthentication.pdb
+C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\AnteeoXMLEngine.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\HotelLocatorServices.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.ServiceLocation.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Practices.ServiceLocation.xml
@@ -68,7 +69,6 @@ C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Owin.Security.
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Owin.Security.Google.xml
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Owin.Security.Twitter.xml
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\bin\AnteeoXMLEngine.pdb
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\obj\Debug\AnteeoHotelLocator.csprojResolveAssemblyReference.cache
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\obj\Debug\AnteeoHotelLocator.dll
 C:\C#Projects\AnteeoHotelLocator\AnteeoHotelLocator\obj\Debug\AnteeoHotelLocator.pdb
