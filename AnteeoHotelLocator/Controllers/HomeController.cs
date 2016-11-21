@@ -1,21 +1,10 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Compilation;
 using System.Web.Mvc;
-using System.Configuration;
-using System.Configuration.Internal;
-using Anteeo.Caching.Anteeo.Caching.Concretes;
 using Anteeo.Caching.Anteeo.Caching.Interfaces;
 using Anteeo.Hotel.Domain.TransferObjects;
 using AnteeoAuthentication.AuthAbstracts;
-using AnteeoAuthentication.AuthenticationConcretes;
 using HotelLocatorServices.ServiceInterfaces;
-using HotelLocatorServices.ConcreteServices;
-using Microsoft.Owin.Security.Infrastructure;
 using Microsoft.Practices.Unity;
 
 namespace AnteeoHotelLocator.Controllers
@@ -31,9 +20,6 @@ namespace AnteeoHotelLocator.Controllers
         public HomeController()
         {
             int.TryParse(ConfigHelper.CachingDuration, out cachingHours);
-
-            //_authService = new AnteeoHotelLocatorAuth(new HotelAndLocationService(), new AuthenticationTo());
-            //_hotelService = new HotelAndLocationService();
         }
         [InjectionConstructor]
         public HomeController(AuthenticationBase authService, IHotelAndLocation hotelService,IAnteeoCaching anteeoCaching)

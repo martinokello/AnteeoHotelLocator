@@ -97,7 +97,7 @@ namespace HotelLocatorServices.ConcreteServices
                 }
                 catch (Exception e)
                 {
-                    return new ResponseMessage { Content = new List<object> { string.Format("An error Occured!!: {0}", e.Message) ,e.StackTrace}.ToArray() };
+                    return new ResponseMessage { Content = new List<dynamic> { string.Format("An error Occured!!: {0}", e.Message) ,e.StackTrace}.ToArray() };
                 }
                 return new ResponseMessage{Content = new[]{ "No Service Mode Stated!!"}};
             }
