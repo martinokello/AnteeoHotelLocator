@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../Anteeo.Caching" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Anteeo.Hotel.Domain" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../AnteeoAuthentication" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../AnteeoHotelLocator" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../AnteeoHotelLocator.Tests" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../AnteeoXMLEngine" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../HotelLocatorServices" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Anteeo.Caching/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Anteeo.Caching/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Anteeo.Hotel.Domain/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Anteeo.Hotel.Domain/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../AnteeoAuthentication/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../AnteeoAuthentication/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../AnteeoHotelLocator.Tests/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../AnteeoHotelLocator.Tests/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../AnteeoHotelLocator/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../AnteeoHotelLocator/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../AnteeoXMLEngine/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../AnteeoXMLEngine/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../HotelLocatorServices/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../HotelLocatorServices/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

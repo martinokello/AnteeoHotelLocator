@@ -18,10 +18,11 @@ namespace Anteeo.Caching.Anteeo.Caching.Concretes
             return _cache[key];
         }
 
-        public Cache CacheObject
+
+        public Cache GetCacheObject() { return new System.Web.Caching.Cache(); }
+        public void SetCacheObject(Cache cacheObject)
         {
-            set { _cache = value; }
-            get { return _cache; }
+            _cache = cacheObject;
         }
         public void StoreIntoCache(string key, dynamic value, int duration)
         {

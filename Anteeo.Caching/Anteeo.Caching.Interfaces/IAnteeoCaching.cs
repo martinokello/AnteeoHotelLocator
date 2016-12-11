@@ -11,6 +11,7 @@ namespace Anteeo.Caching.Anteeo.Caching.Interfaces
     {
         dynamic GetFromCache(string key);
         void StoreIntoCache(string key, dynamic value, int duration);
-        Cache CacheObject { get; set; }
+        Cache GetCacheObject();
+        void SetCacheObject(Cache cacheObject);
     }
 }

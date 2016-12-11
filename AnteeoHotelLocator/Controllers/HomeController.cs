@@ -14,29 +14,32 @@ namespace AnteeoHotelLocator.Controllers
         private IAnteeoCaching _cachingService;
         private IHotelAndLocation _hotelService;
         private AuthenticationBase _authService;
-        private int cachingHours = 0;
-        private const string cacheTokenKey = "TokenKey";
+        private IConfig _configService;
+        public int cachingHours;
+
+    private const string cacheTokenKey = "TokenKey";
 
         public HomeController()
         {
-            int.TryParse(ConfigHelper.CachingDuration, out cachingHours);
         }
         [InjectionConstructor]
-        public HomeController(AuthenticationBase authService, IHotelAndLocation hotelService,IAnteeoCaching anteeoCaching)
+        public HomeController(AuthenticationBase authService, IHotelAndLocation hotelService,IAnteeoCaching anteeoCaching, IConfig configService)
         {
             _authService = authService;
             _hotelService = hotelService;
             _cachingService = anteeoCaching;
+            _configService = configService;
         }
         public ActionResult Index()
         {
-            _cachingService.CacheObject = HttpContext.Cache;
-            
+            int.TryParse(_configService.CachingDuration, out cachingHours);
+            if(HttpContext != null)
+            _cachingService.SetCacheObject(HttpContext.Cache);
             var authObject = new AuthenticationTo
             {
                 DurationOfAuthorization = cachingHours,
-                Username = ConfigHelper.UserName,
-                Password = ConfigHelper.Password,
+                Username = _configService.UserName,
+                Password = _configService.Password,
                 TimeSpanValidForUnits = AnteeoTimeUnits.Hours
             };
 
@@ -62,7 +65,7 @@ namespace AnteeoHotelLocator.Controllers
                 //{
                     //if (pingResponse.Content[0])
                     //{
-                        listOfRegions = _hotelService.GetAllHotelAndLocationData(ConfigHelper.HotelServiceEndpointUrl,
+                        listOfRegions = _hotelService.GetAllHotelAndLocationData(_configService.HotelServiceEndpointUrl,
                             queryParams, resultTokenContent);
                         if (listOfRegions.GetType().IsAssignableFrom(typeof (string[])))
                         {
@@ -85,7 +88,7 @@ namespace AnteeoHotelLocator.Controllers
 
         private string GetAuthToken(AuthenticationTo authObject,string cacheTokenKey, int cachingHours)
         {
-            var resultTokenContent = _authService.GetToken(ConfigHelper.AuthUrl, authObject.Username, authObject.Password);
+            var resultTokenContent = _authService.GetToken(_configService.AuthUrl, authObject.Username, authObject.Password);
             _cachingService.StoreIntoCache(cacheTokenKey, resultTokenContent, cachingHours);
             authObject.StartTime = DateTime.Now;
             authObject.Token = resultTokenContent;

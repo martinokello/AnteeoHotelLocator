@@ -37,6 +37,7 @@ namespace AnteeoHotelLocator.App_Start
             container.RegisterType<IHotelAndLocation,HotelAndLocationService>();
             container.RegisterType<AuthenticationBase,AnteeoHotelLocatorAuth>();
             container.RegisterType<IAnteeoCaching, AnteeoCaching>();
+            container.RegisterType<IConfig,ConfigHelper>();
 
             IEnumerable<Type> controllerTypes = from t in Assembly.GetExecutingAssembly().GetTypes()
                                                 where typeof(IController).IsAssignableFrom(t)
